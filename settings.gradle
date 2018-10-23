@@ -1,0 +1,3 @@
+rootProject.name = 'blend'
+
+include 'server','common','aspectJ'
