@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ander.blend.sqlTrain.mapper.ScMapper">
+  <resultMap id="BaseResultMap" type="com.ander.blend.sqlTrain.domain.Sc">
+    <result column="Snum" jdbcType="VARCHAR" property="snum" />
+    <result column="Cnum" jdbcType="VARCHAR" property="cnum" />
+    <result column="score" jdbcType="DECIMAL" property="score" />
+  </resultMap>
+
+</mapper>

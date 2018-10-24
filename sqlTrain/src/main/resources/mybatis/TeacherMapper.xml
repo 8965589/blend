@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ander.blend.sqlTrain.mapper.TeacherMapper">
+  <resultMap id="BaseResultMap" type="com.ander.blend.sqlTrain.domain.Teacher">
+    <result column="Tnum" jdbcType="VARCHAR" property="tnum" />
+    <result column="Tname" jdbcType="VARCHAR" property="tname" />
+  </resultMap>
+
+</mapper>

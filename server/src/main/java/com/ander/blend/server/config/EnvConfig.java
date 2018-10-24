@@ -1,6 +1,7 @@
 package com.ander.blend.server.config;
 
 import com.ander.blend.common.base.Constants;
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
@@ -18,6 +19,7 @@ import org.springframework.scheduling.annotation.EnableAsync;
 
 })
 @ComponentScan({"com.ander"})//因为引入jar
+@MapperScan("com.ander.**.mapper")
 @EnableAsync
 public class EnvConfig {
 }

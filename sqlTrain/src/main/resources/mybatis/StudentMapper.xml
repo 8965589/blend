@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ander.blend.sqlTrain.mapper.StudentMapper">
+  <resultMap id="BaseResultMap" type="com.ander.blend.sqlTrain.domain.Student">
+    <result column="Snum" jdbcType="VARCHAR" property="snum" />
+    <result column="Sname" jdbcType="VARCHAR" property="sname" />
+    <result column="Sage" jdbcType="TIMESTAMP" property="sage" />
+    <result column="Ssex" jdbcType="VARCHAR" property="ssex" />
+  </resultMap>
+  <!--parameterType="java.lang.Integer"-->
+  <select id="selectOne" resultMap="BaseResultMap">
+
+select * from student c where c.Snum  in ( select a.Snum from
+(select * from  sc where Cnum = '01') a,
+
+(select * from  sc where Cnum ='02' ) b  where a.score > b.score and a.Snum = b.Snum  )
+
+
+  </select>
+
+
+
+
+</mapper>
