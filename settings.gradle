@@ -1,5 +1,4 @@
 rootProject.name = 'blend'
 
-include 'server','common','aspectJ'
-include 'sqlTrain'
+include 'server','common','aspectJ','sqlTrain'
 

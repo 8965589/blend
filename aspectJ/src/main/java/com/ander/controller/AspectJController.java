@@ -1,7 +1,6 @@
 package com.ander.controller;
 
 
-import com.ander.aspect.SysLogService;
 import com.ander.service.AspectJService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

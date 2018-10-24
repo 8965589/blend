@@ -13,9 +13,11 @@ import org.springframework.scheduling.annotation.EnableAsync;
 
 @Configuration
 @PropertySources({
-        @PropertySource({Constants.CFG_FILE_DB})
+        @PropertySource({Constants.CFG_FILE_DB}),
+        @PropertySource({Constants.CFG_FILE_MYBATIS})
+
 })
-@ComponentScan({"com.ander"})
+@ComponentScan({"com"})
 @EnableAsync
 public class EnvConfig {
 }

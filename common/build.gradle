@@ -2,7 +2,6 @@ dependencies {
     compile "org.springframework.boot:spring-boot-starter-web:$springBootVersion"
     testCompile "org.springframework.boot:spring-boot-starter-test:$springBootVersion"
 
-
     compile(
             [group: 'org.aspectj', name: 'aspectjrt', version: aspectjVersiion],
             [group: 'org.aspectj', name: 'aspectjweaver', version: aspectjVersiion],

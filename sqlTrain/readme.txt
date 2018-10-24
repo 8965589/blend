@@ -1,0 +1,1 @@
+用mybatis 生成工具 生成实体 和 mapper

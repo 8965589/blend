@@ -13,6 +13,9 @@ buildscript {
     }
 }
 
+
+
+
 apply plugin: 'org.springframework.boot'
 
 archivesBaseName = 'server'
@@ -20,13 +23,17 @@ archivesBaseName = 'server'
 
 
 dependencies {
-    ext{
+    ext {
         springBootVersion = '2.0.6.RELEASE'
     }
 
     compile project(':common')
     compile project(':aspectJ')
-    // spring boot
+    compile project(':sqlTrain')
+
+
+
+
     compile "org.springframework.boot:spring-boot-starter-web:$springBootVersion"
 
     testCompile "org.springframework.boot:spring-boot-starter-test:$springBootVersion"

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ander.blend.mapper.JobGradesMapper">
+  <resultMap id="BaseResultMap" type="com.ander.blend.domain.JobGrades">
+    <id column="GRADE_LEVEL" jdbcType="VARCHAR" property="gradeLevel" />
+    <result column="LOWEST_SAL" jdbcType="INTEGER" property="lowestSal" />
+    <result column="HIGHEST_SAL" jdbcType="INTEGER" property="highestSal" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    GRADE_LEVEL, LOWEST_SAL, HIGHEST_SAL
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from job_grades
+    where GRADE_LEVEL = #{gradeLevel,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from job_grades
+    where GRADE_LEVEL = #{gradeLevel,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.ander.blend.domain.JobGrades">
+    insert into job_grades (GRADE_LEVEL, LOWEST_SAL, HIGHEST_SAL
+      )
+    values (#{gradeLevel,jdbcType=VARCHAR}, #{lowestSal,jdbcType=INTEGER}, #{highestSal,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.ander.blend.domain.JobGrades">
+    insert into job_grades
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="gradeLevel != null">
+        GRADE_LEVEL,
+      </if>
+      <if test="lowestSal != null">
+        LOWEST_SAL,
+      </if>
+      <if test="highestSal != null">
+        HIGHEST_SAL,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="gradeLevel != null">
+        #{gradeLevel,jdbcType=VARCHAR},
+      </if>
+      <if test="lowestSal != null">
+        #{lowestSal,jdbcType=INTEGER},
+      </if>
+      <if test="highestSal != null">
+        #{highestSal,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ander.blend.domain.JobGrades">
+    update job_grades
+    <set>
+      <if test="lowestSal != null">
+        LOWEST_SAL = #{lowestSal,jdbcType=INTEGER},
+      </if>
+      <if test="highestSal != null">
+        HIGHEST_SAL = #{highestSal,jdbcType=INTEGER},
+      </if>
+    </set>
+    where GRADE_LEVEL = #{gradeLevel,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ander.blend.domain.JobGrades">
+    update job_grades
+    set LOWEST_SAL = #{lowestSal,jdbcType=INTEGER},
+      HIGHEST_SAL = #{highestSal,jdbcType=INTEGER}
+    where GRADE_LEVEL = #{gradeLevel,jdbcType=VARCHAR}
+  </update>
+</mapper>
