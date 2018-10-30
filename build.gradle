@@ -1,4 +1,4 @@
-group 'blend'
+group 'com.ander'
 version '1.0-SNAPSHOT'
 
 project.ext {
@@ -69,8 +69,9 @@ subprojects {
             options.compilerArgs << "-Xlint:unchecked" << "-Xlint:deprecation"
         }
     }
-    
-    
-    
-    
+
+
+   // sourceSets.main.resources.srcDirs = ["src/main/java","src/main/resources"]
+
+
 }

@@ -1,5 +1,6 @@
 package com.ander.blend.sqlTrain.controller;
 
+import com.ander.blend.sqlTrain.service.SCService;
 import com.ander.blend.sqlTrain.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -10,28 +11,58 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/students")
 public class AllController {
     @Autowired
+    SCService scService;
+    @Autowired
     StudentService studentService;
 
-
-
-
-
-
-
-
+    /**
+     * 查询所有同学的学号、姓名、选课数、总成绩；
+     * 两张表的操作 先用leftjoin  关联成一张虚拟表  再 把 要求的 相同数值 拿出来分组
+     *
+     *
+     *
+     *
+     */
 
 
 
     /**
+     * 查询出平均成绩大于60的 同学的学号和 平均成绩
+     * <p>
+     * 函数 可以写在  select的 后边 也可以当作查询条件
+     * <p>
+     * group by 是  给 行 分组
+     * having 是  给  分组后的 分组  在  分组
+     * <p>
+     * 相同条件分为一组
+     * <p>
+     * 所以 能 select的 只是 这个  条件列  或者 经过 函数处理过的 某个值
+     * <p>
+     * select sc.Snum,---每一组的相同条件
+     * AVG(sc.score)  avg_score  -- 函数  求出某个值
+     * <p>
+     * from sc
+     * <p>
+     * group by sc.Snum  ---按这个条件分组
+     * HAVING AVG(sc.score) >60----分组后再过滤
+     */
+    @RequestMapping("/selectAvg")
+    public ResponseEntity selectAvg() {
+        scService.selectAvg();
+        return ResponseEntity.ok().body(scService.selectAvg());
+    }
+
+
+    /**
      * 查询 01 课程比 02 课程成绩高的所有学生的学号
-     *
-     *
-     *
+     * <p>
+     * <p>
+     * <p>
      * 查询思路:
      * 先把学课程 01 的 所有学生 查询出来 模拟成虚拟表 a
      * 在把学课程 02 的 所有学生 查询出来 模拟成虚拟表 b
      * 再从 虚拟表 a,b 中 查询  相同 学生编号 并且 a.score > b.score 的 学生
-     *
+     * <p>
      * localhost:8080/students/selectOne
      */
     @RequestMapping("/selectOne")

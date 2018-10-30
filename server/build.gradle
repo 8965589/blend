@@ -30,6 +30,7 @@ dependencies {
     compile project(':common')
     compile project(':aspectJ')
     compile project(':sqlTrain')
+    compile project(':filter')
 
     compile "org.springframework.boot:spring-boot-starter-web:$springBootVersion"
 
