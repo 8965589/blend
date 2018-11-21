@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.ander.blend.sqlTrain.mapper.StudentMapper">
-  <resultMap id="BaseResultMap" type="com.ander.blend.sqlTrain.domain.Student">
-    <result column="Snum" jdbcType="VARCHAR" property="snum" />
-    <result column="Sname" jdbcType="VARCHAR" property="sname" />
-    <result column="Sage" jdbcType="TIMESTAMP" property="sage" />
-    <result column="Ssex" jdbcType="VARCHAR" property="ssex" />
-  </resultMap>
-  <!--parameterType="java.lang.Integer"-->
-  <select id="selectOne" resultMap="BaseResultMap">
+    <resultMap id="BaseResultMap" type="com.ander.blend.sqlTrain.domain.Student">
+        <result column="Snum" jdbcType="VARCHAR" property="snum"/>
+        <result column="Sname" jdbcType="VARCHAR" property="sname"/>
+        <result column="Sage" jdbcType="TIMESTAMP" property="sage"/>
+        <result column="Ssex" jdbcType="VARCHAR" property="ssex"/>
+    </resultMap>
+    <!--parameterType="java.lang.Integer"-->
+    <select id="selectOne" resultMap="BaseResultMap">
 
 select * from student c where c.Snum  in ( select a.Snum from
 (select * from  sc where Cnum = '01') a,
@@ -18,7 +18,19 @@ select * from student c where c.Snum  in ( select a.Snum from
 
   </select>
 
+    <select id="selectSan" resultType="map">
+    SELECT * from (select sum(sc.score) 总分,count(sc.Cnum) 总数,SC.Snum  from sc sc group by sc.Snum ) a
+LEFT JOIN student s ON a.Snum = s.Snum
+  </select>
 
-
+    <select id="selectAvg" resultType="java.util.HashMap">
+        select sc.Snum,AVG(sc.score)  avgscore from sc
+        group by sc.Snum
+        HAVING AVG(sc.score) >60
+    </select>
+    <select id="findLi" resultType="java.util.HashMap">
+      select COUNT(distinct(Teacher.TName)) 总数 from Teacher
+where Teacher.Tname like '李%'
+    </select>
 
 </mapper>

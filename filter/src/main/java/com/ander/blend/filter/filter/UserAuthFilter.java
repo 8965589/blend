@@ -24,7 +24,8 @@ public class UserAuthFilter extends OncePerRequestFilter {//继承之后 过滤�
 
         String[] noFilter = new String[]{
                 "/login",
-                "/interceptor"
+                "/interceptor","/sql",
+                "/webC"
 
         };//不过滤 其他路径都过滤
         boolean doFilter = true;

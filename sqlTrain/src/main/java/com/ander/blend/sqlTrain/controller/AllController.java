@@ -1,29 +1,44 @@
 package com.ander.blend.sqlTrain.controller;
 
-import com.ander.blend.sqlTrain.service.SCService;
 import com.ander.blend.sqlTrain.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/students")
+@RequestMapping("/sql")
 public class AllController {
-    @Autowired
-    SCService scService;
+
     @Autowired
     StudentService studentService;
 
+
     /**
-     * 查询所有同学的学号、姓名、选课数、总成绩；
-     * 两张表的操作 先用leftjoin  关联成一张虚拟表  再 把 要求的 相同数值 拿出来分组
-     *
-     *
-     *
-     *
+     * 查询姓“李”的老师的个数；
      */
 
+
+
+    @GetMapping("/findLi")
+    public ResponseEntity    findLi() {
+        return ResponseEntity.ok().body(studentService.findLi());
+    }
+
+
+    /**
+     * 查询所有同学的学号、姓名、选课数、总成绩；
+     *
+     * 先求 选课数 和 总成绩  count sum/avg  然后 在和 同学表 关联 ok
+     *
+     * 两张表的操作 先用leftjoin  关联成一张虚拟表  再 把 要求的 相同数值 拿出来分组
+     */
+
+    @GetMapping("/selectSan")
+    public ResponseEntity selectSan() {
+        return ResponseEntity.ok().body(studentService.selectSan());
+    }
 
 
     /**
@@ -48,8 +63,8 @@ public class AllController {
      */
     @RequestMapping("/selectAvg")
     public ResponseEntity selectAvg() {
-        scService.selectAvg();
-        return ResponseEntity.ok().body(scService.selectAvg());
+
+        return ResponseEntity.ok().body(studentService.selectAvg());
     }
 
 
