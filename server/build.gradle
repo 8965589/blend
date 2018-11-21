@@ -31,7 +31,6 @@ dependencies {
     compile project(':aspectJ')
     compile project(':sqlTrain')
     compile project(':filter')
-    compile project(':webC')
 
     compile "org.springframework.boot:spring-boot-starter-web:$springBootVersion"
 
