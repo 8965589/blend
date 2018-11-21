@@ -2,4 +2,4 @@ rootProject.name = 'blend'
 
 include 'server','common','aspectJ','sqlTrain'
 include 'filter'
-
+include 'javaSE'
