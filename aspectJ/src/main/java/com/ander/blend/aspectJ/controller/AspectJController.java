@@ -13,7 +13,6 @@ public class AspectJController {
     @Autowired
     AspectJService aspectJService;
 
-
     //@SysLogAnnotation("测试注解")
     @RequestMapping("/menthodAnnotation")
     public ResponseEntity menthodAnnotation(){
