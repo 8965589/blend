@@ -32,5 +32,12 @@ LEFT JOIN student s ON a.Snum = s.Snum
       select COUNT(distinct(Teacher.TName)) 总数 from Teacher
 where Teacher.Tname like '李%'
     </select>
+    <select id="findNoZS" parameterType="map" resultType="java.util.HashMap">
+
+select Snum,Sname from student where Snum not in (
+        select sc.Snum from  sc where sc.Cnum =
+        (SELECT Cnum FROM course,teacher where course.Tnum
+        = teacher.Tnum and teacher.Tname = #{tName}))
+    </select>
 
 </mapper>

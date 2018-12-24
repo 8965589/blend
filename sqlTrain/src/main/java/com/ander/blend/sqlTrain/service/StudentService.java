@@ -40,4 +40,12 @@ public class StudentService {
 
 
     }
+
+    public  List<HashMap<String, Object>>  findNoZS(Map map){
+        List<HashMap<String, Object>> findNoZS = studentMapper.findNoZS(map);
+
+        return findNoZS;
+    }
+
+
 }

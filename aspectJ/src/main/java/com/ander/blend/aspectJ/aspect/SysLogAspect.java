@@ -34,6 +34,8 @@ import java.util.List;
  *
  * <p>
  * <p>
+ *     第一个* 表示 返回值 , 后边时包路径名,几个*都一样,() 是 参数 (..)任意参数
+ *
  * execution(public * *(..)):任意public方法
  * execution(* set*(..)):方法名以set开头的任意方法
  * execution(* com.xyz.service.AccountService.*(..))：AccountService 接口下的任意方法
@@ -55,6 +57,16 @@ public class SysLogAspect {
     private SysLogService logService;
 
     /**
+     *
+     *
+     *
+     *
+     *
+     *
+     *
+     *
+     *
+     *
      * 第一种方式
      * 切入点
      * 第一种方式  在 controller  方法上！！！ 添加 @SysLogAnnotation("测试注解") 就可以 直接 调用执行了

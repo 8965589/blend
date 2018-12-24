@@ -7,6 +7,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.HashMap;
+import java.util.Map;
+
 @RestController
 @RequestMapping("/sql")
 public class AllController {
@@ -14,24 +17,38 @@ public class AllController {
     @Autowired
     StudentService studentService;
 
+    /**
+     * 查询出没有学习 张三老师课程的 学生的学号和姓名
+     * 先根据 老师和课程表 求出老师的课程编号,然后去 课程与学生的映射中 筛选即可
+     */
+
+    @GetMapping("/findNoZS")
+    public ResponseEntity findNoZS() {
+        Map<String, String> map = new HashMap();
+        map.put("tName", "张三");
+        return ResponseEntity.ok().body(studentService.findNoZS(map));
+    }
+
+
+    //=====================================
 
     /**
      * 查询姓“李”的老师的个数；
      */
 
 
-
     @GetMapping("/findLi")
-    public ResponseEntity    findLi() {
+    public ResponseEntity findLi() {
         return ResponseEntity.ok().body(studentService.findLi());
     }
 
+//=====================================
 
     /**
      * 查询所有同学的学号、姓名、选课数、总成绩；
-     *
+     * <p>
      * 先求 选课数 和 总成绩  count sum/avg  然后 在和 同学表 关联 ok
-     *
+     * <p>
      * 两张表的操作 先用leftjoin  关联成一张虚拟表  再 把 要求的 相同数值 拿出来分组
      */
 
@@ -67,6 +84,7 @@ public class AllController {
         return ResponseEntity.ok().body(studentService.selectAvg());
     }
 
+//=====================================
 
     /**
      * 查询 01 课程比 02 课程成绩高的所有学生的学号

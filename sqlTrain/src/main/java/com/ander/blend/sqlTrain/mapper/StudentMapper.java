@@ -19,4 +19,6 @@ public interface StudentMapper extends MyBatisBaseDao<Student, Student> {
     List<HashMap<String, Object>> selectAvg();
 
     List<Map> findLi();
+
+    List<HashMap<String, Object>> findNoZS(Map map);
 }

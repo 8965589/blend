@@ -21,10 +21,9 @@ public class UserAuthFilter extends OncePerRequestFilter {//继承之后 过滤�
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
-
         String[] noFilter = new String[]{
                 "/login",
-                "/interceptor","/sql",
+                "/interceptor", "/sql",
                 "/webC"
 
         };//不过滤 其他路径都过滤
@@ -37,16 +36,16 @@ public class UserAuthFilter extends OncePerRequestFilter {//继承之后 过滤�
                 doFilter = false;
                 break;
             }
-
         }
 
         HttpSession session = request.getSession();
         Object username = session.getAttribute("username");
 
-
         if (doFilter && username == null) {
-            System.out.println("你写的路径需要过滤,并且 username ==null  让你跳转到 登录页面");
-            response.sendRedirect(request.getContextPath() + "/login");
+            //System.out.println("你写的路径需要过滤,并且 username ==null  让你跳转到 登录页面");
+            //response.sendRedirect(request.getContextPath() + "/login");
+            System.out.println("过滤器关掉 UserAuthFilter");
+            filterChain.doFilter(request, response);//过滤器执行完毕 执行的路径
         } else {
             System.out.println("已经登录 或者 不需要过滤 的路径");
             filterChain.doFilter(request, response);//过滤器执行完毕 执行的路径
